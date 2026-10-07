@@ -1,19 +1,26 @@
-function Card({ nombre, descripcion, boton }) {
-  function mostrarMensaje() {
-    console.log("Hiciste click en el boton");
-  }
+import { useState } from "react";
 
-  return (
-    <article>
-      <h2>{nombre}</h2>
+function Card({ nombre, descripcion, boton, informacion}) {
 
-      <p>{descripcion}</p>
+    const [mostrar, setMostrar] = useState(false);
 
-      <button onClick={mostrarMensaje}>
-        {boton}
-      </button>
-    </article>
-  );
+    return (
+        <article>
+            <h2>{nombre}</h2>
+
+            <p>{descripcion}</p>
+
+            {mostrar && (
+                <p>
+                  {informacion}
+                  </p>
+            )}
+
+            <button onClick={() => setMostrar(!mostrar)}>
+                {mostrar ? "Ocultar": "Ver mas"}
+            </button>
+        </article>
+    );
 }
 
 export default Card;

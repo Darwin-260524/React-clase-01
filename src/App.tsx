@@ -12,17 +12,37 @@ function App() {
 
       <section>
         <Card
-          nombre="Didesño web"
-          descripcion="Diseño moderno atractivo para tu sitio web"
+          nombre="Diseño web"
+          descripcion="Diseño moderno y atractivo para tu sitio web"
+          boton="Ver más"
+          informacion="Escoge tu diseño:
+          Clasico
+          Naturaleza
+          Moder"
+          
+          
         />
+
         <Card
-          nombre="Marketing digital"
-          descripcion="Estrategias efectivas para promocionar tu negocio en linea"
+          nombre="Desarrollo web"
+          descripcion="Desarrollo de aplicaciones web modernas y eficientes"
+          boton="Ver más"
+          informacion="Aqui puedes ver elprogreso de tu pagina web"
         />
+
+        <Card
+          nombre="Bases de datos"
+          descripcion="Base de datos de la pagina"
+          boton="Ver más"
+          informacion="Agrege sus datos"
+        />
+
       </section>
 
       <Footer />
+
     </div>
+
   );
 }
 

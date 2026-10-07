@@ -4,7 +4,11 @@ function Hero() {
       <h1>Bienvenidos a nuestra aplicacion</h1>
       <p>Una interfaz utilizando React.</p>
 
-      <button>Comenzar</button>
+      <button onClick={() => alert("Bienvenido a la aplicacion")}>
+          inicio
+        </button> 
+       
+       
     </section>
   );
 }
