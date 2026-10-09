@@ -1,55 +1,56 @@
 import { useState } from "react";
 
-function Formulario() {
+export default function Formulario({ onAgregarUsuario }) {
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
-  const [contraseña, setContraseña] = useState("");
+  const [registrado, setRegistrado] = useState(false);
 
-  function registrar(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    alert("¡Bienvenido! Tu registro ha sido exitoso." + nombre);
-    // Lógica para manejar el envío del formulario
-  }
+    if (onAgregarUsuario && nombre) {
+      onAgregarUsuario(nombre);
+    }
+    setRegistrado(true);
+  };
 
   return (
-    <section>
-      <h2>Registro</h2>
-
-      <form onSubmit={registrar}>
-        <label htmlFor="nombre">Nombre:</label>
-        <input
-          type="text"
-          id="nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          minLength={3}
-          required
-        />
-
-        <label htmlFor="correo">Correo:</label>
-        <input
-          type="email"
-          id="correo"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-          required
-        />
-
-        <label htmlFor="contraseña">Contraseña:</label>
-        <input
-          type="password"
-          id="contraseña"
-          value={contraseña}
-          onChange={(e) => setContraseña(e.target.value)}
-          minLength={8}
-          required
-        />
-
-        <button type="submit">Registrar</button>
+    <div className="seccion-contenedor">
+      <h2>Registro de Usuario</h2>
+      {registrado && (
+        <p style={{ color: "var(--acento-primario)", fontWeight: "bold" }}>
+          ¡Bienvenido, {nombre}! Te has registrado correctamente.
+        </p>
+      )}
+      <form onSubmit={handleSubmit}>
+        <div className="formulario-campo">
+          <label>Nombre:</label>
+          <input
+            type="text"
+            required
+            value={nombre}
+            onChange={(e) => {
+              setNombre(e.target.value);
+              setRegistrado(false);
+            }}
+          />
+        </div>
+        <div className="formulario-campo">
+          <label>Correo:</label>
+          <input
+            type="email"
+            required
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
+          />
+        </div>
+        <div className="formulario-campo">
+          <label>Contraseña:</label>
+          <input type="password" required />
+        </div>
+        <button type="submit" className="tarjeta-boton" style={{ width: "100%" }}>
+          Registrar
+        </button>
       </form>
-    </section>
+    </div>
   );
 }
-
-export default Formulario;
